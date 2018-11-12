@@ -1,51 +1,27 @@
-let path = require('path');
-let fs = require('fs');
+let sts = require('./settings')
 
-const SETTING_PATH = './settings.json';
-const CONTENTS = ['TIME', 'METHOD', 'POSITION', 'TYPE', 'CONTENT'];
-// const CONTENTS = ['TIME', 'METHOD', 'POSITION', 'TYPE'];
+const CONTENTS = ['_TIME', '_METHOD','_FILE', '_LINE', '_TYPE', '_CONTENT'];
 
-let settings = getSettings();
-let logFormats = settings['developer_options']['logger']['log_format'];
-
-function stackInfo() {
-	let stackReg = /at\s+(.*)\s+\((.*):(\d*):(\d*)\)/i;
-	let stackReg2 = /at\s+()(.*):(\d*):(\d*)/i;
-	let stacklist = (new Error()).stack.split('\n').slice(3);
-	let s = stacklist[0];
-	let sp = stackReg.exec(s) || stackReg2.exec(s);
-	let data = {};
-	if (sp && sp.length === 5) {
-		data.method = sp[1];
-		data.path = sp[2];
-		data.line = sp[3];
-		data.pos = sp[4];
-		data.file = path.basename(data.path);
-	}
-  //   data: {method: 'Object.<anonymous>', path: 'F:\\Node\\project\\TOOL\\node-petl\\test.js', line: '6',
-  //   pos: '5', file: 'test.js' }
-  return data;
-}
-
-function getSettings(){
-	try{
-		let settings = fs.readFileSync( SETTING_PATH, 'utf8');
-		return JSON.parse(settings);
-	}catch (e) {
-		console.log("get settings append error, ", e['message']);
-	}
-}
-
-function logFormat (data) {
-  let style = logFormats['simple'];
+function consoleLogFormat (data) {
+	let style = sts.getFormat(data['type']);
   for (let i of CONTENTS) {
-		if (i === 'CONTENT') {
-			data[i] = toString(data[i]);
+		let value = i.replace("_","");
+		if (value === 'CONTENT') {
+			data[value] = toString(data[value.toLowerCase()]);
+		}else{
+			data[value] = data[value.toLowerCase()];
 		}
-    style = style.replace(i, data[i]);
+    style = style.replace(i, data[value]);
   }
-  let reg = new RegExp(',', 'g');
-  return style.replace(reg,' ');
+	let reg = new RegExp(',','g');
+	let content = style.replace(reg, ' ');
+
+	let color = sts.getColor(data['type']);
+	// console.log(color, content)
+	let contentWithColor = {
+		color, content
+	}
+  return contentWithColor;
 }
 
 function toString (objs) {
@@ -76,5 +52,4 @@ function needToString (data) {
 	return false;
 }
 
-exports.stack = stackInfo;
-exports.format = logFormat;
+exports.format = consoleLogFormat;

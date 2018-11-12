@@ -1,40 +1,46 @@
+let st = require('./stack');
 let ft = require('./format');
 
 function debug () {
   let args = Array.from(arguments);
-  let stack = ft.stack();
-  stack['TYPE'] = "DEBUG";
-  stack['CONTENT'] = args;
-  let a = ft.format(stack);
-  // console.log(params, stack['method'])
-  print(a)
+  let stack = st.stack();
+  someHandle(args, stack, "DEBUG")
 }
 
 function info (params) {
-  console.log(params)
+  let args = Array.from(arguments);
+  let stack = st.stack();
+  someHandle(args, stack, "INFO")
 }
 
 function warn (params) {
-  console.log(params)
+  let args = Array.from(arguments);
+  let stack = st.stack();
+  someHandle(args, stack, "WARN")
 }
 
 function error (params) {
-  console.log(params)
+  let args = Array.from(arguments);
+  let stack = st.stack();
+  someHandle(args, stack, "ERROR")
 }
 
 
 function fatal (params) {
-  console.log(params)
+  let args = Array.from(arguments);
+  let stack = st.stack();
+  someHandle(args, stack, "FATAL")
 }
 
-function format () {
-
+function someHandle (args, stack, type) {
+  stack['type'] = type;
+  stack['content'] = args;
+  print(ft.format(stack))
 }
 
-function print (content) {
-  console.log(content);
+function print (data) {
+  console.log(data['color'], data['content']);
 }
-
 
 exports.debug = debug;
 exports.info = info;

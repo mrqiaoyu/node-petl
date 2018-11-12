@@ -6,10 +6,38 @@
   },
   "developer_options": {
     "logger": {
-      "log_format":{
-        "simple": "[TIME][TYPE] CONTENT",
-        "standard": "[{time}][{method}][{type}] {content}",
-        "detail": "[{time}][{method}][{postion}][{type}] {content}"
+      "console_format": {
+        "choose_template": "standard_template",
+        "format_templates": {
+          "standard_template":{
+            "DEBUG": "detail",
+            "INFO": "simple",
+            "WARN": "standard",
+            "ERROR": "detail",
+            "FATAL": "detail"
+          }
+        }
+      },
+
+      "format_styles":{
+        "simple": "[_TIME][_TYPE]_CONTENT",
+        "standard": "[_TIME][method:_METHOD][_TYPE]_CONTENT",
+        "detail": "[_TIME][method:_METHOD][_FILE:_LINE][_TYPE]_CONTENT"
+      },
+
+      "log_console_color": {
+        "choose_color": "standard_color",
+        "color_templates": {
+          "standard_color":{
+            "INFO": 32,
+            "DEBUG": 36,
+            "WARN": 33,
+            "ERROR": 31,
+            "FATAL": 41
+          }
+        },
+
+        "color_code_description":"30:黑 31:红 32:绿 33:黄 34:蓝色 35:紫色 36:深绿 37:白色  背景：40:黑 41:深红 42:绿 43:黄色 44:蓝色 45:紫色 46:深绿 47:白色"
       }
     }
   }
