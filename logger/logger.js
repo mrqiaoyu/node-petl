@@ -1,5 +1,13 @@
-function debug (params) {
-  console.log(params)
+let ft = require('./format');
+
+function debug () {
+  let args = Array.from(arguments);
+  let stack = ft.stack();
+  stack['TYPE'] = "DEBUG";
+  stack['CONTENT'] = args;
+  let a = ft.format(stack);
+  // console.log(params, stack['method'])
+  print(a)
 }
 
 function info (params) {
@@ -17,6 +25,14 @@ function error (params) {
 
 function fatal (params) {
   console.log(params)
+}
+
+function format () {
+
+}
+
+function print (content) {
+  console.log(content);
 }
 
 

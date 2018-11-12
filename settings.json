@@ -1,0 +1,16 @@
+{
+  "user_options": {
+    "logger": {
+      "debug": true
+    }
+  },
+  "developer_options": {
+    "logger": {
+      "log_format":{
+        "simple": "[TIME][TYPE] CONTENT",
+        "standard": "[{time}][{method}][{type}] {content}",
+        "detail": "[{time}][{method}][{postion}][{type}] {content}"
+      }
+    }
+  }
+}
