@@ -39,6 +39,7 @@ function someHandle (args, stack, type) {
 }
 
 function print (data) {
+  if (data !== 'HIDE')
   console.log(data['color'], data['content']);
 }
 

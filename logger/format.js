@@ -4,6 +4,9 @@ const CONTENTS = ['_TIME', '_METHOD','_FILE', '_LINE', '_TYPE', '_CONTENT'];
 
 function consoleLogFormat (data) {
 	let style = sts.getFormat(data['type']);
+	if (data['type'] === 'DEBUG' && !sts.logDebug()) {
+		return "HIDE";
+	}
   for (let i of CONTENTS) {
 		let value = i.replace("_","");
 		if (value === 'CONTENT') {
@@ -15,12 +18,8 @@ function consoleLogFormat (data) {
   }
 	let reg = new RegExp(',','g');
 	let content = style.replace(reg, ' ');
-
 	let color = sts.getColor(data['type']);
-	// console.log(color, content)
-	let contentWithColor = {
-		color, content
-	}
+	let contentWithColor = {color, content}
   return contentWithColor;
 }
 

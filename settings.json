@@ -4,6 +4,7 @@
       "debug": true
     }
   },
+
   "developer_options": {
     "logger": {
       "console_format": {

@@ -30,5 +30,12 @@ function getColor(type){
   return color;
 }
 
+function logDebug(){
+  let settings = getSettings();
+  let logger = settings["user_options"]["logger"];
+  return logger["debug"];
+}
+
 exports.getFormat = getFormat;
 exports.getColor = getColor;
+exports.logDebug = logDebug;
