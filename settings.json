@@ -1,7 +1,12 @@
 {
   "user_options": {
     "logger": {
-      "debug": true
+      "debug":  true,
+      "filter": {
+        "type": "",
+        "method": "",
+        "content": ""
+      }
     }
   },
 

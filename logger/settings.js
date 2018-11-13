@@ -36,6 +36,17 @@ function logDebug(){
   return logger["debug"];
 }
 
+function logFilter(){
+  let settings = getSettings();
+  let filter = settings["user_options"]["logger"]["filter"];
+  let type = filter["type"];
+  let method = filter["method"];
+  let content = filter["content"];
+
+  return {type, method, content};
+}
+
 exports.getFormat = getFormat;
 exports.getColor = getColor;
 exports.logDebug = logDebug;
+exports.logFilter = logFilter;
