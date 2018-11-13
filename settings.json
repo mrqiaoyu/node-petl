@@ -43,7 +43,14 @@
           }
         },
 
-        "color_code_description":"30:黑 31:红 32:绿 33:黄 34:蓝色 35:紫色 36:深绿 37:白色  背景：40:黑 41:深红 42:绿 43:黄色 44:蓝色 45:紫色 46:深绿 47:白色"
+        "color_code_description": "30:黑 31:红 32:绿 33:黄 34:蓝色 35:紫色 36:深绿 37:白色  背景：40:黑 41:深红 42:绿 43:黄色 44:蓝色 45:紫色 46:深绿 47:白色"
+      },
+
+      "log_time": {
+        "choose_time": "standard",
+        "time_templates": {
+          "standard":"yy-mm-dd hh:mm:ss"
+        }
       }
     }
   }

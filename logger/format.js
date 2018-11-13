@@ -1,4 +1,4 @@
-let sts = require('./settings')
+let sts = require('./settings');
 
 const CONTENTS = ['_TIME', '_METHOD','_FILE', '_LINE', '_TYPE', '_CONTENT'];
 
@@ -14,6 +14,9 @@ function consoleLogFormat (data) {
 			data[value] = toString(data[value.toLowerCase()]);
 		}else{
 			data[value] = data[value.toLowerCase()];
+		}
+		if (value === 'TIME') {
+			data[value] = sts.getTime();
 		}
     style = style.replace(i, data[value]);
   }

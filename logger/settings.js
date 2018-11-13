@@ -1,4 +1,6 @@
 let fs = require('fs');
+let timer = require('../time/time');
+
 const SETTING_PATH = './settings.json';
 
 function getSettings () {
@@ -46,7 +48,16 @@ function logFilter(){
   return {type, method, content};
 }
 
+function getTime(){
+  let settings = getSettings();
+  let logger = settings["developer_options"]["logger"];
+  let chooseTime = logger["log_time"]["choose_time"];
+  let format = logger["log_time"]["time_templates"][chooseTime];
+  return timer.format(format);
+}
+
 exports.getFormat = getFormat;
 exports.getColor = getColor;
 exports.logDebug = logDebug;
 exports.logFilter = logFilter;
+exports.getTime = getTime;
