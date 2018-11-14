@@ -1,5 +1,5 @@
 let fs = require('fs');
-
+var path = require('path');
 let timer = require('../time/time');
 
 const SETTING_PATH = path.resolve(__dirname, '..') + '/settings.json';;
