@@ -1,7 +1,8 @@
 let fs = require('fs');
+
 let timer = require('../time/time');
 
-const SETTING_PATH = './settings.json';
+const SETTING_PATH = path.resolve(__dirname, '..') + '/settings.json';;
 
 function getSettings () {
   try{
@@ -13,11 +14,14 @@ function getSettings () {
   }
 }
 
-function getFormat(type){
+function getFormat(type, file){
   let settings = getSettings();
   let logger = settings["developer_options"]["logger"];
-  let chooseTemplate = logger["console_format"]["choose_template"];
-  let typeTemplate = logger["console_format"]["format_templates"][chooseTemplate][type];
+  let isFile = 'console_format';
+  if (file === 'file')
+  isFile = 'file_format';
+  let chooseTemplate = logger[isFile]["choose_template"];
+  let typeTemplate = logger[isFile]["format_templates"][chooseTemplate][type];
   let formatStyles = logger["format_styles"][typeTemplate]
 
   return formatStyles;
@@ -56,8 +60,33 @@ function getTime(){
   return timer.format(format);
 }
 
+function getLogPostion(type){
+  let settings = getSettings();
+  let logger = settings["developer_options"]["logger"];
+  let choose = logger["log_file_postion"]["choose_postion"];
+  let format = logger["log_file_postion"]["templates"][choose];
+  let pos = format['pos'];
+
+  if (pos.match('TIME'))
+  pos = pos.replace('TIME', getTime().split(' ')[0]);
+  if(pos.match('TYPE'))
+  pos = pos.replace('TYPE', type);
+
+  return pos;
+}
+
+function getLogDays () {
+  let settings = getSettings();
+  let logger = settings["developer_options"]["logger"];
+  let day = logger["days"];
+
+  return day;
+}
+
 exports.getFormat = getFormat;
 exports.getColor = getColor;
 exports.logDebug = logDebug;
 exports.logFilter = logFilter;
 exports.getTime = getTime;
+exports.getLogPostion = getLogPostion;
+exports.getLogDays = getLogDays;

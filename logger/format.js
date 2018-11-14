@@ -1,8 +1,10 @@
 let sts = require('./settings');
+let lf = require('./log_file');
 
 const CONTENTS = ['_TIME', '_METHOD','_FILE', '_LINE', '_TYPE', '_CONTENT'];
 
 function consoleLogFormat (data) {
+	logFile(data);
 	if (!filter(data)) {
 		return "HIDE";
 	}
@@ -135,4 +137,22 @@ function matchContent (params, value) {
 	return true;
 }
 
+function logFile (data) {
+	let style = sts.getFormat(data['type'], 'file');
+
+  for (let i of CONTENTS) {
+		let value = i.replace("_","");
+		if (value === 'CONTENT') {
+			data[value] = toString(data[value.toLowerCase()]);
+		}else{
+			data[value] = data[value.toLowerCase()];
+		}
+		if (value === 'TIME') {
+			data[value] = sts.getTime();
+		}
+    style = style.replace(i, data[value]);
+  }
+	let reg = new RegExp(',','g');
+  lf.write(data['type'], style); 
+}
 exports.format = consoleLogFormat;

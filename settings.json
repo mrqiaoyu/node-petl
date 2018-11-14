@@ -12,7 +12,21 @@
 
   "developer_options": {
     "logger": {
+      "days": 1,
       "console_format": {
+        "choose_template": "standard_template",
+        "format_templates": {
+          "standard_template":{
+            "DEBUG": "detail",
+            "INFO": "simple",
+            "WARN": "standard",
+            "ERROR": "detail",
+            "FATAL": "detail"
+          }
+        }
+      },
+
+      "file_format": {
         "choose_template": "standard_template",
         "format_templates": {
           "standard_template":{
@@ -50,6 +64,15 @@
         "choose_time": "standard",
         "time_templates": {
           "standard":"yy-mm-dd hh:mm:ss"
+        }
+      },
+
+      "log_file_postion": {
+        "choose_postion": "standard",
+        "templates": {
+          "standard": {
+            "pos": "cache/TIME.log"
+          }
         }
       }
     }
