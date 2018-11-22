@@ -38,8 +38,6 @@ function deleteLogFile (folder) {
       var filedir = path.join(folder,file);
       fs.stat(filedir, (eror,stats)=>{
         if(eror) return;
-        console.log('oj', time , stats['birthtimeMs'])
-
         if (time > stats['birthtimeMs']/1000){
           try{
             fs.unlinkSync(filedir);
