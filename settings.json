@@ -40,9 +40,9 @@
       },
 
       "format_styles":{
-        "simple": "[_TIME][_TYPE]_CONTENT",
-        "standard": "[_TIME][method:_METHOD][_TYPE]_CONTENT",
-        "detail": "[_TIME][method:_METHOD][_FILE:_LINE][_TYPE]_CONTENT"
+        "simple": "[_TYPE][_TIME]_CONTENT",
+        "standard": "[_TYPE][_TIME][method:_METHOD]_CONTENT",
+        "detail": "[_TYPE][_TIME][method:_METHOD][_FILE:_LINE]_CONTENT"
       },
 
       "log_console_color": {
