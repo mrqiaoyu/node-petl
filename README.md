@@ -1,7 +1,7 @@
 # node-petl
 ## 项目介绍
-  1. 描述
-  自定义的开发工具包
+1. 描述
+自定义的开发工具包
 
   2. 功能
   * 日志功能
@@ -18,6 +18,14 @@
 
   3.使用
 
-  ```log.debug('debug');  log.info('info');  log.warn('warn');  log.error('error');  log.fatal('fatal');```
+  ```
+  log.debug('debug');
+  log.info('info');
+  log.warn('warn');
+  log.error('error');
+  log.fatal('fatal');
+
+  ```
 
   4.配置文件
+  
