@@ -1,0 +1,22 @@
+{
+  "name": "node-petl",
+  "version": "1.0.0",
+  "description": "log and some tool",
+  "main": "petl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrqiaoyu/node-petl.git"
+  },
+  "keywords": [
+    "log"
+  ],
+  "author": "mrqiaoyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrqiaoyu/node-petl/issues"
+  },
+  "homepage": "https://github.com/mrqiaoyu/node-petl#readme"
+}

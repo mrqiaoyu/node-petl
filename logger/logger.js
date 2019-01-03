@@ -1,6 +1,9 @@
 let st = require('./stack');
 let ft = require('./format');
 
+/**
+ * debug bufen
+ */
 function debug () {
   let args = Array.from(arguments);
   let stack = st.stack();

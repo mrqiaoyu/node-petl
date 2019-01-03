@@ -31,7 +31,6 @@ function creatLogFile (dirpath, mode) {
 function deleteLogFile (folder) {
   let days = sts.getLogDays();
   let time = (new Date())/1000 - (days * 24 * 3600);
-  console.log(time)
   fs.readdir(folder,(err,files)=>{
 		if(err) return;
     files.forEach((file)=>{
