@@ -1,4 +1,4 @@
-let log = require('./logger/logger')
+let log = require('./lib/logger/logger')
 
 module.exports = {
   /**
