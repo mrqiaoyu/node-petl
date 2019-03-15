@@ -10,13 +10,9 @@
 ### log 工具使用
   1.引入工具包
 
-  `let petl = require ('./node-petl/index');`
+  `let log = require ('node-petl');`
 
-  2.声明工具对象
-
-  `let log = petl.log;`
-
-  3.使用
+  2.使用
 
   ```
   log.debug('debug');
@@ -28,4 +24,3 @@
   ```
 
   4.配置文件
-  
